@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 //설정정보
 public class AppConfig {
-
     /*public MemberService memberService() {
         return new MemberServiceImpl(new MemoryMemberRepository());
     }
@@ -31,11 +30,11 @@ public class AppConfig {
         return new OrderServiceImpl(discountPolicy(), memberRepository());
     }
     @Bean
-    private static MemberRepository memberRepository() {
+    public static MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
     @Bean
-    private static DiscountPolicy discountPolicy() {
+    public static DiscountPolicy discountPolicy() {
         return new RateDiscountPolicy();
     }
 }
