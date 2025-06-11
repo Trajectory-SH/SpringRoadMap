@@ -18,7 +18,7 @@ public class MemberApp {
 
         //이 라인이 무슨 의미를 갖고 있었는가?
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-        MemberServiceImpl memberService = applicationContext.getBean("memberService", MemberServiceImpl.class);
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
         Member member = new Member(1L, "전수환", VIP);
         memberService.join(member);
