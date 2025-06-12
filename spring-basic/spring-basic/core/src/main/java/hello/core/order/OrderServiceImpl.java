@@ -3,7 +3,10 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -15,6 +18,7 @@ public class OrderServiceImpl implements OrderService {
 
     //생성자를 통해서 의존관계를 주입하면 된다 ! !
     //철저하게 DIP를 지키고 있다.
+    @Autowired // 자동으로 주입해준다...! 생성자에서 자동으로 의존관계를 주입해준다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
