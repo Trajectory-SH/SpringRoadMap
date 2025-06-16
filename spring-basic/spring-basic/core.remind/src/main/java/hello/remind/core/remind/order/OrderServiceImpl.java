@@ -6,12 +6,16 @@ import hello.remind.core.remind.discount.RateDiscountPolicy;
 import hello.remind.core.remind.member.Member;
 import hello.remind.core.remind.member.MemberRepository;
 import hello.remind.core.remind.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(DiscountPolicy discountPolicy, MemberRepository memberRepository) {
         this.discountPolicy = discountPolicy;
         this.memberRepository = memberRepository;

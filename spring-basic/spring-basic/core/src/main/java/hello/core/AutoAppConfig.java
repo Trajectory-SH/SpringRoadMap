@@ -14,6 +14,7 @@ import org.springframework.context.annotation.FilterType;
         //@Configuration을 들어가보면 @Component가 들어있다.
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
+//어설픈 추상화와 우선순위는 개발을 하는 것에 있어서 제외하는 것이 좋다.. -> 명확성이 가장 좋다!! 여러명이 함께 개발을 하는 것이기 때문에
 public class AutoAppConfig {
 
 }

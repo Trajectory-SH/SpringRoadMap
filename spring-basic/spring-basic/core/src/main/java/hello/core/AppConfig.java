@@ -23,7 +23,6 @@ public class AppConfig {
     //해당 메서드가 실행이 되면..
     @Bean
     public MemberService memberService() {
-        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
         }
     @Bean
@@ -35,12 +34,10 @@ public class AppConfig {
             | 해결 방법 | static 키워드를 제거해 Spring이 프록시를 적용할 수 있도록 하기 |
   */
     public  MemberRepository memberRepository() {
-        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService() {
-        System.out.println("call AppConfig.orderService ");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
     @Bean
