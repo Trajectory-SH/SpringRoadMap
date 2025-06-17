@@ -27,6 +27,11 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	implementation 'org.slf4j:slf4j-api:2.0.9'
 	runtimeOnly 'ch.qos.logback:logback-classic:1.4.14'
+	implementation 'javax.inject:javax.inject:1'
+	implementation 'org.springframework:spring-context:6.2.7' // JSR-330 지원 포함
+
+	//web 라이브러리 추가
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 }
 
 //lombok 설정 추가
