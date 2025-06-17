@@ -26,17 +26,15 @@ public class ConfigurationSingletonTest {
 
 
         MemberRepository memberRepository1 = memberService.getMemberRepository();
-        MemberRepository memberRepository2 = orderService.getMemberRepository();
 
 
         //세 개의 spring Bean이 전부 같은 주소를 참조하고 있다...?!
         System.out.println("memberService-> memberRepository1 = " + memberRepository1);
-        System.out.println("orderService-> memberRepository2 = " + memberRepository2);
+
         System.out.println("memberRepository = " + memberRepository);
 
 
         assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
-        assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
         //혹시 두 번 호출이 되는 것이 아니여,.?
     }
 

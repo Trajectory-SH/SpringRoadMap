@@ -1,8 +1,10 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +20,30 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;//인터페이스에만 의존한다.
 
+  /*  //수정자 주입
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+*/
     //생성자를 통해서 의존관계를 주입하면 된다 ! !
     //철저하게 DIP를 지키고 있다.
-    @Autowired // 자동으로 주입해준다...! 생성자에서 자동으로 의존관계를 주입해준다.
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+
+
+    // 자동으로 주입해준다...! 생성자에서 자동으로 의존관계를 주입해준다.
+
+    //생성자 하나만 있으면 생략이 가능하다. -> 롬복 라이브러리 적용 시작 ~ ! !
+
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository,@MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -34,10 +53,5 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
-
-
     //테스트용
-    public MemberRepository getMemberRepository() {
-        return memberRepository;
-    }
 }
