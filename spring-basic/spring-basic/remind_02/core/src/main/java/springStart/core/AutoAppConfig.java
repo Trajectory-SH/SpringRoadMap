@@ -9,10 +9,10 @@ import springStart.core.member.MemoryMemberRepository;
 
 @Configuration
 @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class))
-//@Component를 붙은 녀석들을 전부 끌어올려준다.
+//@Component를  붙은 녀석들을 전부 끌어올려준다.
 public class AutoAppConfig {
-    @Bean(name = "memoryMemberRepository")
+    /*@Bean(name = "memoryMemberRepository")
     MemberRepository memberRepository() {
         return new MemoryMemberRepository();
-    }
+    }*/
 }

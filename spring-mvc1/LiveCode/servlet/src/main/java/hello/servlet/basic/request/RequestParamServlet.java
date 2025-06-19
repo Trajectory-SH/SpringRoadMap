@@ -18,7 +18,7 @@ import java.util.Enumeration;
 
 @WebServlet(name = "requestParamServlet", urlPatterns = "/request-param")
 public class RequestParamServlet extends HttpServlet {
-    @Override
+    @Override 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //전체 파라미터 조회
         System.out.println("== 전체 파라미터 조회 - start ==");
@@ -38,9 +38,13 @@ public class RequestParamServlet extends HttpServlet {
 
         System.out.println("이름이 같은 복수 파라미터 조회");
         String[] usernames = request.getParameterValues("username");
-        for (String s : usernames) {
-            System.out.println("s = " + s);
+        if (usernames != null) {
+            for (String s : usernames) {
+                System.out.println("s = " + s);
             }
+        } else {
+            System.out.println("username 파라미터가 없습니다.");
+        }
         
         response.getWriter().write("ok");
     }
