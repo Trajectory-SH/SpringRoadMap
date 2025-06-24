@@ -1,12 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>서블릿 & 스프링 MVC 메뉴</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f9f9f9;
+            margin: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .category {
+            background-color: #e0f0ff;
+            padding: 10px 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .submenu {
+            margin-left: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #cce5ff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+
+<h1>📘 김영한 Spring MVC_01</h1>
+
 <ul>
-    <li><a href="basic.html">서블릿 basic</a></li>
+    <li class="category"><a href="basic.html">서블릿 Basic</a></li>
+
+    <li class="category">서블릿</li>
+    <ul class="submenu">
+        <li><a href="/servlet/members/new-form">회원가입</a></li>
+        <li><a href="/servlet/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">JSP</li>
+    <ul class="submenu">
+        <li><a href="/jsp/members/new-form.jsp">회원가입</a></li>
+        <li><a href="/jsp/members.jsp">회원목록</a></li>
+    </ul>
+
+    <li class="category">서블릿 MVC</li>
+    <ul class="submenu">
+        <li><a href="/servlet-mvc/members/new-form">회원가입</a></li>
+        <li><a href="/servlet-mvc/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v1</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v1/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v1/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v2</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v2/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v2/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v3</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v3/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v3/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v4</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v4/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v4/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v5 - v3</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v5/v3/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v5/v3/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">FrontController - v5 - v4</li>
+    <ul class="submenu">
+        <li><a href="/front-controller/v5/v4/members/new-form">회원가입</a></li>
+        <li><a href="/front-controller/v5/v4/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">SpringMVC - v1</li>
+    <ul class="submenu">
+        <li><a href="/springmvc/v1/members/new-form">회원가입</a></li>
+        <li><a href="/springmvc/v1/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">SpringMVC - v2</li>
+    <ul class="submenu">
+        <li><a href="/springmvc/v2/members/new-form">회원가입</a></li>
+        <li><a href="/springmvc/v2/members">회원목록</a></li>
+    </ul>
+
+    <li class="category">SpringMVC - v3</li>
+    <ul class="submenu">
+        <li><a href="/springmvc/v3/members/new-form">회원가입</a></li>
+        <li><a href="/springmvc/v3/members">회원목록</a></li>
+    </ul>
 </ul>
+
 </body>
 </html>
