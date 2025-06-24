@@ -39,8 +39,6 @@ public class FrontControllerServletV3 extends HttpServlet {
         }
 
         //paramMap을 넘겨줘야한다.
-
-
         Map<String, String> paramMap = createParamMap(request);
         ModelView modelView = controller.process(paramMap);
 
