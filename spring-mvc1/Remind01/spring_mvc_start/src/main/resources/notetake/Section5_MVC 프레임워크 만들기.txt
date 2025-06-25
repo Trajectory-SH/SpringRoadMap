@@ -1,0 +1,48 @@
+[Client]
+   |
+   | 1. GET /servlet-mvc/members/new-form
+   v
+[Controller (Servlet)] MvcMemberFormServlet
+   |
+   | 2. forward to JSP
+   v
+[View (JSP)] new-form.jsp
+   |
+   | 3. HTML 렌더링
+   v
+[Client Browser] ← HTML 응답
+
+================================
+
+[브라우저 클라이언트]
+        │
+        │ HTTP GET 요청
+        │ ─────────────────────────────▶
+        │    /servlet-mvc/members/new-form
+        │
+        ▼
+────────────────────────────────────────────
+     [WAS (톰캣 등) 내부 처리]
+────────────────────────────────────────────
+        │
+        │ ① URL 매핑 탐색
+        ▼
+[MvcMemberFormServlet 서블릿 실행]
+        │
+        │ ② viewPath 설정: "/WEB-INF/views/new-form.jsp"
+        │
+        │ ③ RequestDispatcher 생성
+        │
+        │ ④ forward(request, response)
+        ▼
+[new-form.jsp 실행]
+        │
+        │ ⑤ JSP → Servlet 변환 → 실행 → HTML 생성
+        ▼
+[HttpServletResponse에 HTML 작성]
+        │
+        │ ⑥ 응답 반환
+        ▼
+[브라우저 클라이언트]
+        │
+        │ ⑦ 사용자에게 회원가입 양식 화면 표시
