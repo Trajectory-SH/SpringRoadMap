@@ -1,6 +1,6 @@
 package hello.servlet.web.frontcontroller.v5.adapter;
 
-import hello.servlet.web.frontcontroller.ModelView;
+import hello.servlet.web.frontcontroller.ModelAndView;
 import hello.servlet.web.frontcontroller.v4.ControllerV4;
 import hello.servlet.web.frontcontroller.v5.MyHandlerAdapter;
 import jakarta.servlet.ServletException;
@@ -18,14 +18,14 @@ public class ControllerV4HandlerAdapter implements MyHandlerAdapter {
     }
 
     @Override
-    public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
+    public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
         ControllerV4 controller = (ControllerV4) handler;
 
         Map<String, String> paramMap = createParamMap(request);
         HashMap<String , Object> model = new HashMap<>();
 
         String viewName = controller.process(paramMap, model);
-        ModelView modelView = new ModelView(viewName);
+        ModelAndView modelView = new ModelAndView(viewName);
         modelView.setModel(model);
 
         return modelView;

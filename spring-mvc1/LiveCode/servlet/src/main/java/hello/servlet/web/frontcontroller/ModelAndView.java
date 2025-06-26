@@ -5,15 +5,14 @@ import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @Setter
 @Getter
-public class ModelView {
+public class ModelAndView {
     private String viewName;
     private Map<String, Object> model = new HashMap<>();
 
-    public ModelView(String viewName) {
+    public ModelAndView(String viewName) {
         this.viewName = viewName;
 
     }
