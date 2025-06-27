@@ -25,8 +25,8 @@ public class ControllerV4HandlerAdapter implements MyHandlerAdapter {
         HashMap<String , Object> model = new HashMap<>();
 
         String viewName = controller.process(paramMap, model);
-        ModelAndView modelView = new ModelAndView(viewName);
 
+        ModelAndView modelView = new ModelAndView(viewName);
         modelView.setModel(model);
 
         return modelView;
