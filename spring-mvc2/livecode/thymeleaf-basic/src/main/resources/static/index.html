@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Examples - Dark Mode</title>
+    <style>
+        /* 기본 설정 */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgba(120, 215, 115, 0.68);
+            margin-bottom: 40px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            background: #2a2a2a;
+            margin: 8px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        li > ul {
+            margin-top: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #80d93f;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #80deea;
+            text-decoration: underline;
+        }
+
+        li > strong {
+            font-size: 1.1em;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🌙 Thymeleaf Spring MVC_2</h1>
+
+<ul>
+    <li><strong>텍스트</strong>
+        <ul>
+            <li><a href="/basic/text-basic">텍스트 출력 기본</a></li>
+            <li><a href="/basic/text-unescaped">텍스트 text, utext</a></li>
+        </ul>
+    </li>
+    <li><strong>표준 표현식 구문</strong>
+        <ul>
+            <li><a href="/basic/variable">변수 - SpringEL</a></li>
+            <li><a href="/basic/basic-objects?paramData=HelloParam">기본 객체들</a></li>
+            <li><a href="/basic/date">유틸리티 객체와 날짜</a></li>
+            <li><a href="/basic/link">링크 URL</a></li>
+            <li><a href="/basic/literal">리터럴</a></li>
+            <li><a href="/basic/operation">연산</a></li>
+        </ul>
+    </li>
+    <li><strong>속성 값 설정</strong>
+        <ul>
+            <li><a href="/basic/attribute">속성 값 설정</a></li>
+        </ul>
+    </li>
+    <li><strong>반복</strong>
+        <ul>
+            <li><a href="/basic/each">반복</a></li>
+        </ul>
+    </li>
+    <li><strong>조건부 평가</strong>
+        <ul>
+            <li><a href="/basic/condition">조건부 평가</a></li>
+        </ul>
+    </li>
+    <li><strong>주석 및 블록</strong>
+        <ul>
+            <li><a href="/basic/comments">주석</a></li>
+            <li><a href="/basic/block">블록</a></li>
+        </ul>
+    </li>
+    <li><strong>자바스크립트 인라인</strong>
+        <ul>
+            <li><a href="/basic/javascript">자바스크립트 인라인</a></li>
+        </ul>
+    </li>
+    <li><strong>템플릿 레이아웃</strong>
+        <ul>
+            <li><a href="/template/fragment">템플릿 조각</a></li>
+            <li><a href="/template/layout">유연한 레이아웃</a></li>
+            <li><a href="/template/layoutExtend">레이아웃 상속</a></li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
