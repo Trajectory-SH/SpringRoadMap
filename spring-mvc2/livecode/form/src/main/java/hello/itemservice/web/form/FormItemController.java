@@ -32,6 +32,7 @@ public class FormItemController {
     }
 
     @GetMapping("/add")
+    public String addForm() {
         return "form/addForm";
     }
 
