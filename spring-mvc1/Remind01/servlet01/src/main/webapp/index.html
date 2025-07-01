@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>서블릿 학습 페이지</title>
+    <style>
+        /* 기본 설정 */
+        body {
+            background-color: #1e1e1e;
+            color: #eaeaea;
+            font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        /* 전체 리스트 스타일 */
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* 상위 메뉴 */
+        > ul > li {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* 하위 메뉴 스타일 */
+        ul ul {
+            margin-top: 8px;
+            margin-left: 20px;
+            border-left: 2px solid #444;
+            padding-left: 16px;
+        }
+
+        /* 링크 스타일 */
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* 링크만 강조 - 더 깔끔하고 덜 산만함 */
+        a {
+            color: #81d4fa;
+            text-decoration: none;
+            transition: color 0.2s ease, border-left 0.2s ease;
+            padding-left: 4px;
+            display: inline-block;
+        }
+
+        /* hover 시 배경 대신 색상 및 좌측 바로만 강조 */
+        a:hover {
+            color: #b3e5fc;
+            border-left: 3px solid #81d4fa;
+            background-color: rgba(255, 255, 255, 0.05); /* 약한 배경 */
+            padding-left: 8px; /* 살짝 들여쓰기 느낌 */
+        }
+
+
+        /* 반응형 폰트 */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            > ul > li {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="basic.html">서블릿 basic</a></li>
+    <li>서블릿
+        <ul>
+            <li><a href="/servlet/members/new-form">회원가입</a></li>
+            <li><a href="/servlet/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>JSP
+        <ul>
+            <li><a href="/jsp/members/new-form.jsp">회원가입</a></li>
+            <li><a href="/jsp/members.jsp">회원목록</a></li>
+        </ul>
+    </li>
+    <li>서블릿 MVC
+        <ul>
+            <li><a href="/servlet-mvc/members/new-form">회원가입</a></li>
+            <li><a href="/servlet-mvc/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v1
+        <ul>
+            <li><a href="/front-controller/v1/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v1/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v2
+        <ul>
+            <li><a href="/front-controller/v2/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v2/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v3
+        <ul>
+            <li><a href="/front-controller/v3/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v3/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v4
+        <ul>
+            <li><a href="/front-controller/v4/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v4/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v5 - v3
+        <ul>
+            <li><a href="/front-controller/v5/v3/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v5/v3/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>FrontController - v5 - v4
+        <ul>
+            <li><a href="/front-controller/v5/v4/members/new-form">회원가입</a></li>
+            <li><a href="/front-controller/v5/v4/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>SpringMVC - v1
+        <ul>
+            <li><a href="/springmvc/v1/members/new-form">회원가입</a></li>
+            <li><a href="/springmvc/v1/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>SpringMVC - v2
+        <ul>
+            <li><a href="/springmvc/v2/members/new-form">회원가입</a></li>
+            <li><a href="/springmvc/v2/members">회원목록</a></li>
+        </ul>
+    </li>
+    <li>SpringMVC - v3
+        <ul>
+            <li><a href="/springmvc/v3/members/new-form">회원가입</a></li>
+            <li><a href="/springmvc/v3/members">회원목록</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
