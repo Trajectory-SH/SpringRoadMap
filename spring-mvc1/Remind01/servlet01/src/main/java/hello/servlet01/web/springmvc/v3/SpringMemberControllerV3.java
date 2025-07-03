@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * BestPractice -> Http API 설계
  * Spring이 제공해주는 Model을 도입
- * ViewName(논리) 직접 밚롼
+ * ViewName(논리) 직접 반환
  *
  * @RequestParam 사용
  * @RequestMapping -> @GetMapping, @PostMapping
