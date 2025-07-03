@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC 예제 메뉴</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 14px;
+        }
+
+        a {
+            color: #80cbc4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #b2ebf2;
+            text-decoration: underline;
+        }
+
+        ul > li {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        ul > li > ul {
+            margin-top: 6px;
+            margin-left: 20px;
+            font-weight: normal;
+            font-size: 15px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        ::selection {
+            background: #44475a;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<h1>Spring MVC 예제 메뉴</h1>
+<ul>
+    <li>로그 출력
+        <ul>
+            <li><a href="/log-test">로그 테스트</a></li>
+        </ul>
+    </li>
+
+    <li>요청 매핑
+        <ul>
+            <li><a href="/hello-basic">hello-basic</a></li>
+            <li><a href="/mapping-get-v1">HTTP 메서드 매핑</a></li>
+            <li><a href="/mapping-get-v2">HTTP 메서드 매핑 축약</a></li>
+            <li><a href="/mapping/userA">경로 변수</a></li>
+            <li><a href="/mapping/users/userA/orders/100">경로 변수 다중</a></li>
+            <li><a href="/mapping-param?mode=debug">특정 파라미터 조건 매핑</a></li>
+            <li><a href="/mapping-header">특정 헤더 조건 매핑 (POSTMAN 필요)</a></li>
+            <li><a href="/mapping-consume">Content-Type 조건 매핑</a></li>
+            <li><a href="/mapping-produce">Accept 조건 매핑</a></li>
+        </ul>
+    </li>
+
+    <li>요청 매핑 - API 예시
+        <ul><li>POSTMAN 필요</li></ul>
+    </li>
+
+    <li>HTTP 요청 기본
+        <ul>
+            <li><a href="/headers">기본, 헤더 조회</a></li>
+        </ul>
+    </li>
+
+    <li>HTTP 요청 파라미터
+        <ul>
+            <li><a href="/request-param-v1?username=hello&age=20">파라미터 v1</a></li>
+            <li><a href="/request-param-v2?username=hello&age=20">파라미터 v2</a></li>
+            <li><a href="/request-param-v3?username=hello&age=20">파라미터 v3</a></li>
+            <li><a href="/request-param-v4?username=hello&age=20">파라미터 v4</a></li>
+            <li><a href="/request-param-required?username=hello&age=20">필수 파라미터</a></li>
+            <li><a href="/request-param-default?username=hello&age=20">기본값 사용</a></li>
+            <li><a href="/request-param-map?username=hello&age=20">MAP 파라미터</a></li>
+            <li><a href="/model-attribute-v1?username=hello&age=20">@ModelAttribute v1</a></li>
+            <li><a href="/model-attribute-v2?username=hello&age=20">@ModelAttribute v2</a></li>
+        </ul>
+    </li>
+
+    <li>HTTP 요청 메시지
+        <ul><li>POSTMAN 필요</li></ul>
+    </li>
+
+    <li>HTTP 응답 - 정적 리소스, 뷰 템플릿
+        <ul>
+            <li><a href="/basic/hello-form.html">정적 리소스</a></li>
+            <li><a href="/response-view-v1">뷰 템플릿 v1</a></li>
+            <li><a href="/response-view-v2">뷰 템플릿 v2</a></li>
+        </ul>
+    </li>
+
+    <li>HTTP 응답 - HTTP API, 메시지 바디
+        <ul>
+            <li><a href="/response-body-string-v1">API String v1</a></li>
+            <li><a href="/response-body-string-v2">API String v2</a></li>
+            <li><a href="/response-body-string-v3">API String v3</a></li>
+            <li><a href="/response-body-json-v1">API Json v1</a></li>
+            <li><a href="/response-body-json-v2">API Json v2</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
