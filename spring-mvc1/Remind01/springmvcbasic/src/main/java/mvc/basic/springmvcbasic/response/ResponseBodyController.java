@@ -18,7 +18,7 @@ import java.io.IOException;
 @Controller
 public class ResponseBodyController {
 
-    @GetMapping("/response-body-string-v1",)
+    @GetMapping("/response-body-string-v1")
     public void responseBodyV1(HttpServletResponse response) throws IOException {
         response.getWriter().write("ok");
     }
@@ -28,8 +28,7 @@ public class ResponseBodyController {
         return new ResponseEntity<>("ok", HttpStatus.OK);
     }
 
-
-    //best practice..?
+    //best practice...?
     @ResponseBody
     @GetMapping("/response-body-string-v3")
     public String responseBodyV3() {
