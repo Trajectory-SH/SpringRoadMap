@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static hello.login.web.SessionConst.LOGIN_MEMBER;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -97,8 +99,9 @@ public class LoginController {
         }
 
         HttpSession session = request.getSession();//세션이 있으면 있는 세션 반환, 없으면 새로운 세션 생성
-        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
+        session.setAttribute(LOGIN_MEMBER, loginMember);
 
+        //Client가 다시 서버에 해당 URL로 GET request message를 전송하는 것을 강제한다.
         return "redirect:/";
     }
 
