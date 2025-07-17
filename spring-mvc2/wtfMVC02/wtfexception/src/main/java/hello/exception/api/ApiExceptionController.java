@@ -1,11 +1,14 @@
 package hello.exception.api;
 
 
+import hello.exception.exception.BadRequestException;
+import hello.exception.exception.UserException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -18,8 +21,25 @@ public class ApiExceptionController {
         if (id.equals("ex")) {
             throw new RuntimeException("[올바르지 않은 사용자 접속]");
         }
+        if (id.equals("bad")) {
+            throw new IllegalArgumentException("[잘못된 argument]");
+        }
+        if (id.equals("user-ex")) {
+            throw new UserException("[사용자 오류]");
+        }
+
+
         return new MemberDto(id, "hello" + id);
-        
+    }
+
+    @GetMapping("/api/response-status-ex1")
+    public String responseStatusEx1() {
+        throw new BadRequestException();
+    }
+
+    @GetMapping("/api/default-handler-ex")
+    public String defaultException(@RequestParam Integer data) {
+        return "ok";
     }
 
     @Data
