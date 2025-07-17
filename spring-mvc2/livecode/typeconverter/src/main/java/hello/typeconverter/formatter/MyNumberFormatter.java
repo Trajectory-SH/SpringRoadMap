@@ -9,6 +9,7 @@ import java.util.Locale;
 
 @Slf4j
 public class MyNumberFormatter implements Formatter<Number> {
+
     @Override
     public Number parse(String text, Locale locale) throws ParseException {
         log.info("text = {} , locale = {}", text, locale);
