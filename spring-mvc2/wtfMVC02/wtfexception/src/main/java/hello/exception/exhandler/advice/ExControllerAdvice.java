@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @RestControllerAdvice//@ControllerAdvice + @ResponseBody
 public class ExControllerAdvice {
@@ -17,6 +22,7 @@ public class ExControllerAdvice {
     @ExceptionHandler(IllegalArgumentException.class)
     public ErrorResult illegalExHandle(IllegalArgumentException e) {
         log.error("[exceptionalHandle] ex", e);
+         
         return new ErrorResult("dsadasd", e.getMessage());
     }
 
