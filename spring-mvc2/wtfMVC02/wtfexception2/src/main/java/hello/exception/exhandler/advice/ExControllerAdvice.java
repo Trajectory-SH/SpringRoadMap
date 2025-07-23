@@ -22,7 +22,7 @@ public class ExControllerAdvice {
         return new ErrorResult("BAD", e.getMessage());
     }
 
-    @ExceptionHandler//@₩ExceptionHandler의 Attribute값(Error.class)을 생략하면 Parameter의 type 추론한다.
+    @ExceptionHandler//@ExceptionHandler의 Attribute값(Error.class)을 생략하면 Parameter의 type 추론한다.
     //ResponseEntity를 이용해서 상태코드르 지정
     public ResponseEntity<ErrorResult> userExHandle(UserException e) {
         ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
