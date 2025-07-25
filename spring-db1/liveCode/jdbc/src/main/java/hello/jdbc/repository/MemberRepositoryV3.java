@@ -38,7 +38,6 @@ public class MemberRepositoryV3 {
 
             return member;
         } catch (SQLException e) {
-
             log.error("[DB ERROR]", e);
             throw e;
         }finally {
