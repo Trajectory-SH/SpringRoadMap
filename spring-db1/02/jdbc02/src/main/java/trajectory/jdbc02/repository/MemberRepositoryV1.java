@@ -118,7 +118,7 @@ public class MemberRepositoryV1 {
 
     private Connection getConnection() throws SQLException {
         //dataSource로부터 Connection을 얻어온다.
-        Connection con = dataSource.getConnection();
+        Connection con = dataSource.getConnection();//SQLException을 던진다.
         log.info("get Connection = {}, class = {}", con, con.getClass());
         //return DBConnectionUtil.getConnection(); -> DriverManager로부터 얻어오는 Connection이 아니라 DataSource로부터 얻어오는 Connection 이용
         return con;
