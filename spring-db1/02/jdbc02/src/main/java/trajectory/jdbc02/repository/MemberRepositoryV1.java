@@ -1,15 +1,26 @@
 package trajectory.jdbc02.repository;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.support.JdbcUtils;
 import trajectory.jdbc02.connection.DBConnectionUtil;
 import trajectory.jdbc02.domain.Member;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.NoSuchElementException;
 
+/**
+ * DataSource + JdbcUtils 사용
+ */
 @Slf4j
 public class MemberRepositoryV1 {
 
+    private final DataSource dataSource;
+
+    //외부로부터 DataSource를 주입받아서 사용 -> DriverManagerDataSource, HikariCP DataSource등 구현체 주입 가능
+    public MemberRepositoryV1(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public Member save(Member member) throws SQLException {
         //SQL CRUD -> CREATE
@@ -105,35 +116,19 @@ public class MemberRepositoryV1 {
         }
     }
 
-    private Connection getConnection() {
-        return DBConnectionUtil.getConnection();
+    private Connection getConnection() throws SQLException {
+        //dataSource로부터 Connection을 얻어온다.
+        Connection con = dataSource.getConnection();
+        log.info("get Connection = {}, class = {}", con, con.getClass());
+        //return DBConnectionUtil.getConnection(); -> DriverManager로부터 얻어오는 Connection이 아니라 DataSource로부터 얻어오는 Connection 이용
+        return con;
     }
 
     private void close(Connection con, Statement stmt, ResultSet rs) {
         //자원을 사용한 역순으로 닫아줘야한다.
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                log.info("[ERROR]", e);
-            }
-        }
-
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException e) {
-                log.info("Error", e);
-            }
-        }
-
-        if (con != null) {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                log.info("error", e);
-            }
-        }
+        JdbcUtils.closeResultSet(rs);
+        JdbcUtils.closeStatement(stmt);
+        JdbcUtils.closeConnection(con);
     }
 
 }
