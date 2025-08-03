@@ -1,6 +1,7 @@
 package trajectory.springtx.propagation;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,7 +9,10 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.UnexpectedRollbackException;
+import org.springframework.transaction.interceptor.DefaultTransactionAttribute;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.sql.DataSource;
@@ -75,43 +79,76 @@ public class BasicTxTest {
         txManager.rollback(tx2);
     }
 
-        @Test
-        void inner_commit() {
-            log.info("외부 TX 시작");
-            TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionDefinition());
-            log.info("outer is newTX ? = {}", outerTx.isNewTransaction());//TX의 STATUS 객체로부터 new TX 속성을 읽을 수 있다.
-
-            log.info("내부 TX 시작");//Participating in existing transaction
-            TransactionStatus innerTx = txManager.getTransaction(new DefaultTransactionDefinition());
-            log.info("inner is newTX ? = {}", innerTx.isNewTransaction());
-
-            log.info("내부 TX 커밋");
-            txManager.commit(innerTx);
-
-            log.info("외부 TX 커밋");
-            txManager.commit(outerTx);
-
-        }
-
-        @Test
-        void outer_rollback() {
-            log.info("외부 TX 시작");
-            TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionDefinition());
-
-            log.info("내부 TX 시작");//Participating in existing transaction
-            TransactionStatus innerTx = txManager.getTransaction(new DefaultTransactionDefinition());
-
-            log.info("내부 TX 커밋");
-            txManager.commit(innerTx);
-
-            log.info("외부 TX 롤백");
-            txManager.rollback(outerTx);
-        }
-
     @Test
-    void inner_rollback() {
+    void inner_commit() {
+        log.info("외부 TX 시작");
+        TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+        log.info("outer is newTX ? = {}", outerTx.isNewTransaction());//TX의 STATUS 객체로부터 new TX 속성을 읽을 수 있다.
+
+        log.info("내부 TX 시작");//Participating in existing transaction
+        TransactionStatus innerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+        log.info("inner is newTX ? = {}", innerTx.isNewTransaction());
+
+        log.info("내부 TX 커밋");
+        txManager.commit(innerTx);
+
+        log.info("외부 TX 커밋");
+        txManager.commit(outerTx);
 
     }
 
+    @Test
+    void outer_rollback() {
+        log.info("외부 TX 시작");
+        TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+
+        log.info("내부 TX 시작");//Participating in existing transaction
+        TransactionStatus innerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+
+        log.info("내부 TX 커밋");
+        txManager.commit(innerTx);
+
+        log.info("외부 TX 롤백");
+        txManager.rollback(outerTx);
+    }
+
+    @Test
+    void inner_rollback() {
+        log.info("외부 TX 시작");
+        TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+
+        log.info("내부 TX 시작");//Participating in existing transaction
+        TransactionStatus innerTx = txManager.getTransaction(new DefaultTransactionDefinition());
+
+        log.info("내부 TX 롤백");
+        txManager.rollback(innerTx);
+
+        log.info("외부 TX 커밋");
+        Assertions.assertThatThrownBy(() -> txManager.commit(outerTx)).isInstanceOf(UnexpectedRollbackException.class);
+    }
+
+    @Test
+    void inner_rollback_requires_new() {
+        log.info("외부 Tx 시작");
+        TransactionStatus outerTx = txManager.getTransaction(new DefaultTransactionAttribute());
+        log.info("Outer Tx is New = {}", outerTx.isNewTransaction());
+
+        log.info("내부 Tx 시작");
+        DefaultTransactionAttribute definition = new DefaultTransactionAttribute();
+        definition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+
+        TransactionStatus innerTx = txManager.getTransaction(definition);
+        log.info("Inner Tx is New = {}", innerTx.isNewTransaction());
+
+        log.info("내부 트랜잭션 롤백");
+        txManager.rollback(innerTx);
+
+        log.info("외부 트랜잭션 커밋");
+        txManager.commit(outerTx);
+
+    }
 
 }
+
+
+
